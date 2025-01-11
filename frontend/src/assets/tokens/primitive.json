@@ -1,0 +1,50 @@
+{
+  "base": {
+    "surface": {
+      "value": "{Fluv.primary.50}",
+      "type": "color"
+    },
+    "Control": {
+      "value": "{neutral.100}",
+      "type": "color"
+    },
+    "text-sub": {
+      "value": "{Fluv.primary.30}",
+      "type": "color"
+    },
+    "text-main": {
+      "value": "{neutral.10}",
+      "type": "color"
+    }
+  },
+  "main": {
+    "text-main": {
+      "value": "{neutral.10}",
+      "type": "color"
+    },
+    "text-sub": {
+      "value": "{neutral.30}",
+      "type": "color"
+    },
+    "surface": {
+      "value": "{Fluv.contrast.95}",
+      "type": "color"
+    }
+  },
+  "emphasis-alert": {
+    "value": "{Fluv.contrast.50}",
+    "type": "color"
+  },
+  "emphasis-primary": {
+    "value": "{Fluv.primary.20}",
+    "type": "color"
+  },
+  "primaryButton-surface": {
+    "value": "#ffffff",
+    "type": "color"
+  },
+  "hover-mask": {
+    "value": "{mask.netural70-30%}",
+    "type": "color"
+  }
+}
