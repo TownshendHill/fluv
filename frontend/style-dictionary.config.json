@@ -1,5 +1,5 @@
 {
-  "source": ["src/assets/tokens/tokens.json"],
+  "source": ["src/assets/tokens/font.json", "src/assets/tokens/global.json"],
   "platforms": {
     "css": {
       "transformGroup": "css",

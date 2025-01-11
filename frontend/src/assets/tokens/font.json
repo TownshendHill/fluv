@@ -1,0 +1,209 @@
+{
+  "primitive": {
+    "Font Family": {
+      "Android-CH": {
+        "value": "Noto Sans TC",
+        "type": "text"
+      }
+    }
+  },
+  "semantic": {
+    "Font Weight": {
+      "Display-L": {
+        "value": "Regular",
+        "type": "text"
+      },
+      "Display-M": {
+        "value": "Regular",
+        "type": "text"
+      },
+      "Display-S": {
+        "value": "Regular",
+        "type": "text"
+      },
+      "Headline-L": {
+        "value": "Regular",
+        "type": "text"
+      },
+      "Headline-M": {
+        "value": "Semibold",
+        "type": "text"
+      },
+      "Headline-S": {
+        "value": "Regular",
+        "type": "text"
+      },
+      "Title-M": {
+        "value": "Bold",
+        "type": "text"
+      },
+      "Label-L": {
+        "value": "Bold",
+        "type": "text"
+      },
+      "Label-M": {
+        "value": "Regular",
+        "type": "text"
+      },
+      "Body-L": {
+        "value": "Regular",
+        "type": "text"
+      },
+      "Body-M": {
+        "value": "Regular",
+        "type": "text"
+      },
+      "Body-S": {
+        "value": "Regular",
+        "type": "text"
+      }
+    },
+    "Font Family": {
+      "Content": {
+        "value": "{primitive.Font Family.Android-CH}",
+        "type": "text"
+      }
+    },
+    "Font Size": {
+      "Display-L": {
+        "value": 34,
+        "type": "number"
+      },
+      "Display-M": {
+        "value": 28,
+        "type": "number"
+      },
+      "Display-S": {
+        "value": 22,
+        "type": "number"
+      },
+      "Headline-L": {
+        "value": 20,
+        "type": "number"
+      },
+      "Headline-M": {
+        "value": 17,
+        "type": "number"
+      },
+      "Headline-S": {
+        "value": 15,
+        "type": "number"
+      },
+      "Title-M": {
+        "value": 16,
+        "type": "number"
+      },
+      "Label-L": {
+        "value": 12,
+        "type": "number"
+      },
+      "Label-M": {
+        "value": 11,
+        "type": "number"
+      },
+      "Body-L": {
+        "value": 17,
+        "type": "number"
+      },
+      "Body-M": {
+        "value": 16,
+        "type": "number"
+      },
+      "Body-S": {
+        "value": 13,
+        "type": "number"
+      }
+    },
+    "Font Height": {
+      "Display-L": {
+        "value": 41,
+        "type": "number"
+      },
+      "Display-M": {
+        "value": 34,
+        "type": "number"
+      },
+      "Display-S": {
+        "value": 28,
+        "type": "number"
+      },
+      "Headline-L": {
+        "value": 25,
+        "type": "number"
+      },
+      "Headline-M": {
+        "value": 22,
+        "type": "number"
+      },
+      "Headline-S": {
+        "value": 20,
+        "type": "number"
+      },
+      "Title-M": {
+        "value": 21,
+        "type": "number"
+      },
+      "Label-L": {
+        "value": 16,
+        "type": "number"
+      },
+      "Label-M": {
+        "value": 13,
+        "type": "number"
+      },
+      "Body-L": {
+        "value": 22,
+        "type": "number"
+      },
+      "Body-M": {
+        "value": 21,
+        "type": "number"
+      },
+      "Body-S": {
+        "value": 18,
+        "type": "number"
+      }
+    },
+    "Letter Spacing": {
+      "Display-L": {
+        "type": "number"
+      },
+      "Display-M": {
+        "type": "number"
+      },
+      "Display-S": {
+        "type": "number"
+      },
+      "Headline-L": {
+        "type": "number"
+      },
+      "Headline-M": {
+        "type": "number"
+      },
+      "Headline-S": {
+        "type": "number"
+      },
+      "Title-M": {
+        "value": 0.5,
+        "type": "number"
+      },
+      "Label-L": {
+        "value": 0.5,
+        "type": "number"
+      },
+      "Label-M": {
+        "value": 0.5,
+        "type": "number"
+      },
+      "Body-L": {
+        "type": "number"
+      },
+      "Body-M": {
+        "type": "number"
+      },
+      "Body-S": {
+        "type": "number"
+      }
+    }
+  }
+}
