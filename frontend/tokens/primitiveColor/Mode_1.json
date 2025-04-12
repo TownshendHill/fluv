@@ -1,0 +1,148 @@
+{
+  "neutral": {
+    "0": {
+      "value": "#000000",
+      "type": "color"
+    },
+    "10": {
+      "value": "#1c1b1c",
+      "type": "color"
+    },
+    "20": {
+      "value": "#313030",
+      "type": "color"
+    },
+    "30": {
+      "value": "#484646",
+      "type": "color"
+    },
+    "40": {
+      "value": "#605e5e",
+      "type": "color"
+    },
+    "50": {
+      "value": "#797676",
+      "type": "color"
+    },
+    "60": {
+      "value": "#939090",
+      "type": "color"
+    },
+    "70": {
+      "value": "#adaaaa",
+      "type": "color"
+    },
+    "80": {
+      "value": "#c9c6c5",
+      "type": "color"
+    },
+    "90": {
+      "value": "#e5e1e1",
+      "type": "color"
+    },
+    "95": {
+      "value": "#f4f0ef",
+      "type": "color"
+    },
+    "99": {
+      "value": "#fffbff",
+      "type": "color"
+    },
+    "100": {
+      "value": "#ffffff",
+      "type": "color"
+    }
+  },
+  "Fluv": {
+    "primary": {
+      "10": {
+        "value": "#182729",
+        "type": "color"
+      },
+      "20": {
+        "value": "#304f51",
+        "type": "color"
+      },
+      "30": {
+        "value": "#48767a",
+        "type": "color"
+      },
+      "40": {
+        "value": "#609ea2",
+        "type": "color"
+      },
+      "50": {
+        "value": "#78c5cb",
+        "type": "color"
+      },
+      "60": {
+        "value": "#93d1d5",
+        "type": "color"
+      },
+      "70": {
+        "value": "#aedce0",
+        "type": "color"
+      },
+      "80": {
+        "value": "#c9e8ea",
+        "type": "color"
+      },
+      "90": {
+        "value": "#e4f3f5",
+        "type": "color"
+      },
+      "95": {
+        "value": "#f2f9fa",
+        "type": "color"
+      }
+    },
+    "contrast": {
+      "10": {
+        "value": "#331c0e",
+        "type": "color"
+      },
+      "20": {
+        "value": "#66371d",
+        "type": "color"
+      },
+      "30": {
+        "value": "#99532b",
+        "type": "color"
+      },
+      "40": {
+        "value": "#cc6e3a",
+        "type": "color"
+      },
+      "50": {
+        "value": "#ff8a48",
+        "type": "color"
+      },
+      "60": {
+        "value": "#ffa16d",
+        "type": "color"
+      },
+      "70": {
+        "value": "#ffb991",
+        "type": "color"
+      },
+      "80": {
+        "value": "#ffd0b6",
+        "type": "color"
+      },
+      "90": {
+        "value": "#ffe8da",
+        "type": "color"
+      },
+      "95": {
+        "value": "#fff3ed",
+        "type": "color"
+      }
+    }
+  },
+  "mask": {
+    "netural70-30%": {
+      "value": "#adaaaa4d",
+      "type": "color"
+    }
+  }
+}
