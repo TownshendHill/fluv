@@ -1,0 +1,110 @@
+@use "@angular/material" as mat;
+@import "./variables.scss";
+
+// === Color Palettes ===
+// custom palettes
+$fluv-primary-palette: (
+  50: $fluv-primary-90,
+  100: $fluv-primary-80,
+  200: $fluv-primary-70,
+  300: $fluv-primary-60,
+  400: $fluv-primary-50,
+  500: $fluv-primary-50,
+  600: $fluv-primary-40,
+  700: $fluv-primary-30,
+  800: $fluv-primary-20,
+  900: $fluv-primary-10,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: $neutral-0,
+    100: $neutral-10,
+    200: $neutral-20,
+    300: $neutral-30,
+    400: $neutral-40,
+    500: $neutral-60,
+    600: $neutral-70,
+    700: $neutral-80,
+    800: $neutral-90,
+    900: $neutral-100,
+    A100: #ff8a80,
+    A200: #ff5252,
+    A400: #ff1744,
+    A700: #d50000,
+  ),
+);
+$frontend-primary: mat.define-palette($fluv-primary-palette, 500, 300, 700);
+
+$fluv-accent-palette: (
+  50: $fluv-contrast-90,
+  100: $fluv-contrast-80,
+  200: $fluv-contrast-70,
+  300: $fluv-contrast-60,
+  400: $fluv-contrast-50,
+  500: $fluv-contrast-50,
+  600: $fluv-contrast-40,
+  700: $fluv-contrast-30,
+  800: $fluv-contrast-20,
+  900: $fluv-contrast-10,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: $neutral-0,
+    100: $neutral-10,
+    200: $neutral-20,
+    300: $neutral-30,
+    400: $neutral-40,
+    500: $neutral-60,
+    600: $neutral-70,
+    700: $neutral-80,
+    800: $neutral-90,
+    900: $neutral-100,
+    A100: #ff8a80,
+    A200: #ff5252,
+    A400: #ff1744,
+    A700: #d50000,
+  ),
+);
+$frontend-accent: mat.define-palette($fluv-accent-palette, 500, 300, 700);
+
+$fluv-warn-palette: (
+  500: $emphasis-alert,
+  contrast: (
+    500: $neutral-100,
+  ),
+);
+$frontend-warn: mat.define-palette($fluv-warn-palette, 500, 500, 500);
+
+// === Typography ===
+$frontend-typography: mat.define-typography-config(
+  (
+    $display-large: mat.define-typography-level(
+        $font-size: $display-l-font-size,
+        $line-height: $display-l-line-height,
+        $font-weight: $display-l-font-weight,
+        $font-family: $display-l-font-family,
+        $letter-spacing: $display-l-letter-spacing,
+      ),
+  )
+);
+
+// === Final Theme ===
+// Define your color configuration
+$frontend-color-config: (
+  primary: $frontend-primary,
+  accent: $frontend-accent,
+  warn: $frontend-warn,
+);
+
+// Define your theme with separated components
+$frontend-theme: mat.define-light-theme(
+  (
+    color: $frontend-color-config,
+    typography: $frontend-typography,
+    density: 0,
+  )
+);
