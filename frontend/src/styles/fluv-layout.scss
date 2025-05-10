@@ -1,0 +1,144 @@
+@use "sass:map";
+
+/*
+ * ==========================================================
+ * Default Variables
+ * ==========================================================
+ * Description: Default variables for layout
+*/
+
+$gutters-mobile: 1rem;
+$gutters-tablet: 2rem;
+$gutters-laptop: 6rem;
+$gutters-desktop: 12rem;
+
+$gutters: (
+  sm: $gutters-mobile,
+  md: $gutters-tablet,
+  lg: $gutters-laptop,
+  xl: $gutters-desktop,
+);
+
+@function gutter($key) {
+  @return map.get($gutters, $key);
+}
+
+/*
+ * ==========================================================
+ * Breakpoints
+ * ==========================================================
+ * Description: Default breakpoint sizes for media queries
+ */
+
+$bp-mobile: 420px;
+$bp-tablet: 768px;
+$bp-laptop: 992px;
+$bp-desktop: 1200px;
+
+$breakpoints: (
+  sm: $bp-mobile,
+  md: $bp-tablet,
+  lg: $bp-laptop,
+  xl: $bp-desktop,
+);
+
+// Function to get breakpoint value
+@function breakpoint($key) {
+  @return map.get($breakpoints, $key);
+}
+
+// Mixin to apply styles at a breakpoint
+@mixin respond-to($key) {
+  $value: breakpoint($key);
+
+  @if $value {
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint #{$key} not found.";
+  }
+}
+
+/*
+ * ==========================================================
+ * Page Grid System
+ * ==========================================================
+ * Description: page grid system
+ */
+
+@mixin grid-rows(
+  $header-height: auto,
+  $content-height: 1fr,
+  $footer-height: auto
+) {
+  grid-template-rows:
+    [header-start] $header-height
+    [header-end content-start] $content-height
+    [content-end footer-start] $footer-height
+    [footer-end];
+}
+
+// Column counts by breakpoint
+$column-counts: (
+  sm: 1,
+  md: 4,
+  lg: 8,
+  xl: 8,
+);
+
+// Column widths by breakpoint
+$column-widths: (
+  sm: 100%,
+  md: 18rem,
+  lg: 14rem,
+  xl: 14rem,
+);
+
+// Responsive column structure
+@mixin grid-cols() {
+  // Mobile columns (default)
+  @if map.get($column-counts, sm) > 1 {
+    @include grid-cols-for-breakpoint(sm);
+  } @else {
+    // Special case for single column mobile layout
+    grid-template-columns:
+      [full-start] gutter(sm)
+      [content-start] 1fr
+      [content-end] gutter(sm)
+      [full-end];
+  }
+
+  // Dynamically generate for all breakpoints larger than 'sm'
+  @each $breakpoint, $width in $breakpoints {
+    @if $breakpoint != sm {
+      @include respond-to($breakpoint) {
+        @include grid-cols-for-breakpoint($breakpoint);
+      }
+    }
+  }
+}
+
+@mixin page-grid(
+  $header-height: auto,
+  $content-height: 1fr,
+  $footer-height: auto
+) {
+  display: grid;
+  min-height: 100dvh;
+  @include grid-rows($header-height, $content-height, $footer-height);
+  @include grid-cols();
+}
+
+// utility
+@mixin grid-cols-for-breakpoint($breakpoint) {
+  grid-template-columns:
+    [full-start] minmax(gutter($breakpoint), 1fr)
+    [content-start] repeat(
+      map.get($column-counts, $breakpoint),
+      [col-start] minmax(min-content, map.get($column-widths, $breakpoint))
+        [col-end]
+    )
+    [content-end] minmax(gutter($breakpoint), 1fr)
+    [full-end];
+}

@@ -1,0 +1,29 @@
+@use "@angular/material" as mat;
+@use "./fluv-theme-colors.scss" as fluvtheme;
+@use "./variables.scss" as tokens;
+
+@include mat.core(); // required once in the app
+
+$fluv-theme-config: (
+  color: (
+    primary: fluvtheme.$primary-palette,
+    tertiary: mat.$orange-palette,
+    theme-type: light,
+    use-system-variables: true,
+    system-variables-prefix: "fluv",
+  ),
+  typography: (
+    brand-family: tokens.$font-families-android-ch,
+    plain-family: tokens.$font-families-android-ch,
+    bold-weight: 700,
+    medium-weight: 500,
+    regular-weight: 400,
+    use-system-variables: true,
+    system-variables-prefix: "fluv",
+  ),
+  density: (
+    scale: 0,
+  ),
+);
+
+$fluv-theme: mat.define-theme($fluv-theme-config);

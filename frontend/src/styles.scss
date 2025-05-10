@@ -1,10 +1,45 @@
 @use "@angular/material" as mat;
+@use "./styles/fluv-theme-typography.scss" as *;
+@use "fluv-layout" as layout;
+@use "variables" as tokens;
 
-@import "./styles/variables.scss"; // brings in token variables
-@import "./styles/theme.scss"; // brings in the theme definition
+:root {
+  --fluv-body-large-size: 10px;
+  --fluv-gutter: #{layout.gutter("sm")};
 
-@include mat.core(); // required once in the app
+  @include mat.theme($fluv-theme-config);
+  @include mat.typography-hierarchy($fluv-theme);
+  @include mat.system-level-colors($fluv-theme);
+  @include mat.system-level-typography($fluv-theme);
 
-@include mat.all-component-themes($frontend-theme);
-// apply your theme
-// @include mat.theme($frontend-theme);
+  @include layout.respond-to(md) {
+    --fluv-gutter: #{layout.gutter("md")};
+  }
+  @include layout.respond-to(lg) {
+    --fluv-gutter: #{layout.gutter("lg")};
+  }
+  @include layout.respond-to(xl) {
+    --fluv-gutter: #{layout.gutter("xl")};
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px/16px = 62.5% -> makes 1rem = 10px, 16px is the default
+}
+body {
+  margin: 0;
+  background-color: tokens.$fluv-contrast-95;
+}
+
+// div {
+//   font-size: var(--fluv-body-large-size);
+// }

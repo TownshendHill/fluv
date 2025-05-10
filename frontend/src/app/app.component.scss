@@ -1,0 +1,70 @@
+@use "@angular/material" as mat;
+@use "../styles/fluv-layout.scss" as layout;
+@use "../styles/variables.scss" as tokens;
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em; // 1200px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 50em; // 800px;
+$bp-small: 37.5em; // 600px;
+
+// .container {
+//   display: grid;
+//   grid-template-rows:
+//     [header-start] auto
+//     [header-end main-start] 1fr
+//     [main-end footer-start] auto
+//     [footer-end];
+//   grid-template-columns:
+//     [full-start] 1rem
+//     [center-start] 1fr
+//     [center-end] 1rem
+//     [full-end];
+//   min-height: 100dvh;
+
+//   @include layout.respond-to(md) {
+//     grid-template-columns:
+//       [full-start] minmax(6rem, 1fr)
+//       [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+//       [center-end] minmax(6rem, 1fr) [full-end];
+//   }
+
+//   .header {
+//     grid-column: full-start / full-end;
+
+//     & > * {
+//       grid-column: center-start / center-end;
+//     }
+//   }
+
+//   .main {
+//     grid-column: center-start / center-end;
+//   }
+
+//   .footer {
+//     grid-column: full-start / full-end;
+//     grid-row: footer-start / footer-end;
+//   }
+// }
+
+.container {
+  @include layout.page-grid();
+
+  .header {
+    grid-column: full-start / full-end;
+    background-color: tokens.$fluv-primary-50;
+
+    & > * {
+      padding: 0 var(--fluv-gutter);
+    }
+  }
+
+  .main {
+    grid-column: content-start / content-end;
+  }
+
+  .footer {
+    grid-column: full-start / full-end;
+    grid-row: footer-start / footer-end;
+  }
+}
