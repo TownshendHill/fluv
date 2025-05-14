@@ -21,6 +21,21 @@
   @include layout.respond-to(xl) {
     --fluv-gutter: #{layout.gutter("xl")};
   }
+
+  // icon overrides
+  button {
+    @include mat.icon-overrides(
+      (
+        color: tokens.$fluv-contrast-90,
+      )
+    );
+  }
+
+  @include mat.icon-overrides(
+    (
+      color: tokens.$fluv-primary-40,
+    )
+  );
 }
 
 *,

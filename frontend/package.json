@@ -7,7 +7,8 @@
     "build": "ng build",
     "build-output": "node export-tokens/build-output.js",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "sprite": "npx svg-sprite --symbol --symbol-dest=src/assets/icons --symbol-sprite=fluv-sprite.svg icons/*.svg"
   },
   "type": "module",
   "private": true,
@@ -41,6 +42,8 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "style-dictionary": "^4.3.3",
+    "svg-sprite": "^2.0.4",
+    "svgstore-cli": "^2.0.1",
     "typescript": "~5.8.3"
   }
 }
