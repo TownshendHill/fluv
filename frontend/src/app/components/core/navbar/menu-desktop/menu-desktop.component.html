@@ -1,0 +1,28 @@
+<!-- navbar-desktop/navbar-desktop.component.html -->
+<nav class="nav-bar">
+  <ul class="nav-list">
+    @for (item of menuItems(); track item.path) {
+      <li class="nav-item" [class.has-children]="item.children">
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.path === '/home' }"
+        >
+          {{ item.label }}
+        </a>
+
+        @if (item.children) {
+          <ul class="nav-dropdown">
+            @for (child of item.children; track child.path) {
+              <li class="nav-dropdown-item">
+                <a [routerLink]="child.path" routerLinkActive="active">
+                  {{ child.label }}
+                </a>
+              </li>
+            }
+          </ul>
+        }
+      </li>
+    }
+  </ul>
+</nav>

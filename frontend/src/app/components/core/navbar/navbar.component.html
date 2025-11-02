@@ -1,0 +1,36 @@
+<mat-toolbar>
+  <mat-toolbar-row class="toolbar-content">
+    <div class="icon">
+      <img src="assets/logo/logo.png" alt="Logo" class="logo" />
+    </div>
+
+    @if (isDesktop()) {
+      <fluv-group>
+        @for (item of menuItems(); track item.path) {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: item.path === '/home' }"
+            class="menu-item"
+          >
+            {{ item.label }}
+          </a>
+        }
+      </fluv-group>
+    } @else {
+      <fluv-nav-button
+        [navConfig]="menuIcon"
+        ariaLabel="Menu"
+        (click)="toggleMenu()"
+      />
+    }
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- @if (!isDesktop()) {
+  <fluv-sidenav
+    [menuItems]="menuItems()"
+    [isOpen]="isMobileMenuOpen()"
+    (closed)="isMobileMenuOpen.set(false)"
+  />
+} -->

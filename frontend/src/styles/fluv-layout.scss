@@ -2,32 +2,47 @@
 
 /*
  * ==========================================================
- * Default Variables
+ * Base Spacing Scale
  * ==========================================================
- * Description: Default variables for layout
-*/
+ */
 
-$gutters-mobile: 1rem;
-$gutters-tablet: 2rem;
-$gutters-laptop: 6rem;
-$gutters-desktop: 12rem;
+$spacing-base: 0.25rem;
 
-$gutters: (
-  sm: $gutters-mobile,
-  md: $gutters-tablet,
-  lg: $gutters-laptop,
-  xl: $gutters-desktop,
+$spacing: (
+  0: 0,
+  1: $spacing-base * 1,
+  // 4px
+  2: $spacing-base * 2,
+  // 8px
+  3: $spacing-base * 3,
+  // 12px
+  4: $spacing-base * 4,
+  // 16px
+  5: $spacing-base * 5,
+  // 20px
+  6: $spacing-base * 6,
+  // 24px
+  8: $spacing-base * 8,
+  // 32px
+  10: $spacing-base * 10,
+  // 40px
+  12: $spacing-base * 12,
+  // 48px
+  16: $spacing-base * 16,
+  // 64px
+  20: $spacing-base * 20,
+  // 80px
+  24: $spacing-base * 24, // 96px
 );
 
-@function gutter($key) {
-  @return map.get($gutters, $key);
+@function spacing($key) {
+  @return map.get($spacing, $key);
 }
 
 /*
  * ==========================================================
  * Breakpoints
  * ==========================================================
- * Description: Default breakpoint sizes for media queries
  */
 
 $bp-mobile: 420px;
@@ -42,15 +57,12 @@ $breakpoints: (
   xl: $bp-desktop,
 );
 
-// Function to get breakpoint value
 @function breakpoint($key) {
   @return map.get($breakpoints, $key);
 }
 
-// Mixin to apply styles at a breakpoint
 @mixin respond-to($key) {
   $value: breakpoint($key);
-
   @if $value {
     @media (min-width: $value) {
       @content;
@@ -62,83 +74,170 @@ $breakpoints: (
 
 /*
  * ==========================================================
- * Page Grid System
+ * Container Padding
  * ==========================================================
- * Description: page grid system
+ * Description: Outer padding from viewport edges
  */
 
-@mixin grid-rows(
-  $header-height: auto,
-  $content-height: 1fr,
-  $footer-height: auto
-) {
-  grid-template-rows:
-    [header-start] $header-height
-    [header-end content-start] $content-height
-    [content-end footer-start] $footer-height
-    [footer-end];
-}
-
-// Column counts by breakpoint
-$column-counts: (
-  sm: 1,
-  md: 4,
-  lg: 8,
-  xl: 8,
+$container-padding: (
+  sm: spacing(4),
+  // 16px
+  md: spacing(8),
+  // 32px
+  lg: spacing(12),
+  // 48px
+  xl: spacing(16), // 64px
 );
 
-// Column widths by breakpoint
-$column-widths: (
-  sm: 100%,
-  md: 18rem,
-  lg: 14rem,
-  xl: 14rem,
-);
-
-// Responsive column structure
-@mixin grid-cols() {
-  // Mobile columns (default)
-  @if map.get($column-counts, sm) > 1 {
-    @include grid-cols-for-breakpoint(sm);
-  } @else {
-    // Special case for single column mobile layout
-    grid-template-columns:
-      [full-start] gutter(sm)
-      [content-start] 1fr
-      [content-end] gutter(sm)
-      [full-end];
-  }
-
-  // Dynamically generate for all breakpoints larger than 'sm'
-  @each $breakpoint, $width in $breakpoints {
-    @if $breakpoint != sm {
-      @include respond-to($breakpoint) {
-        @include grid-cols-for-breakpoint($breakpoint);
-      }
-    }
-  }
+@function container-padding($key) {
+  @return map.get($container-padding, $key);
 }
 
-@mixin page-grid(
+/*
+ * ==========================================================
+ * Gutters
+ * ==========================================================
+ * Description: Space between grid columns
+ */
+
+$gutters: (
+  sm: spacing(4),
+  // 16px
+  md: spacing(6),
+  // 24px
+  lg: spacing(6),
+  // 24px
+  xl: spacing(8), // 32px
+);
+
+@function gutter($key) {
+  @return map.get($gutters, $key);
+}
+
+/*
+ * ==========================================================
+ * App Structure Grid (Header/Main/Footer)
+ * ==========================================================
+ * Description: Grid for app-level structural layout
+ */
+
+@mixin app-structure-grid(
   $header-height: auto,
   $content-height: 1fr,
   $footer-height: auto
 ) {
   display: grid;
   min-height: 100dvh;
-  @include grid-rows($header-height, $content-height, $footer-height);
-  @include grid-cols();
+  grid-template-rows:
+    [header-start] $header-height
+    [header-end main-start] $content-height
+    [main-end footer-start] $footer-height
+    [footer-end];
 }
 
-// utility
-@mixin grid-cols-for-breakpoint($breakpoint) {
-  grid-template-columns:
-    [full-start] minmax(gutter($breakpoint), 1fr)
-    [content-start] repeat(
-      map.get($column-counts, $breakpoint),
-      [col-start] minmax(min-content, map.get($column-widths, $breakpoint))
-        [col-end]
-    )
-    [content-end] minmax(gutter($breakpoint), 1fr)
-    [full-end];
+/*
+ * ==========================================================
+ * Content Padding Mixin
+ * ==========================================================
+ * Description: Apply padding to content areas (not full-width elements)
+ */
+
+@mixin content-padding() {
+  padding-inline: container-padding(sm);
+
+  @include respond-to(md) {
+    padding-inline: container-padding(md);
+  }
+
+  @include respond-to(lg) {
+    padding-inline: container-padding(lg);
+  }
+
+  @include respond-to(xl) {
+    padding-inline: container-padding(xl);
+  }
+}
+
+/*
+ * ==========================================================
+ * 12-Column Content Grid System
+ * ==========================================================
+ * Description: Responsive 12-column grid for content layouts
+ * Usage: Apply to page components or sections that need column layouts
+ */
+
+$column-counts: (
+  sm: 4,
+  md: 8,
+  lg: 12,
+  xl: 12,
+);
+
+$column-max-widths: (
+  sm: 100%,
+  md: 18rem,
+  lg: 14rem,
+  xl: 14rem,
+);
+
+@mixin content-grid-for-breakpoint($breakpoint) {
+  $col-count: map.get($column-counts, $breakpoint);
+  $col-max-width: map.get($column-max-widths, $breakpoint);
+  $gap: gutter($breakpoint);
+
+  display: grid;
+  grid-template-columns: repeat($col-count, minmax(0, $col-max-width));
+  gap: $gap;
+  justify-content: center;
+}
+
+@mixin content-grid() {
+  @include content-grid-for-breakpoint(sm);
+
+  @include respond-to(md) {
+    @include content-grid-for-breakpoint(md);
+  }
+
+  @include respond-to(lg) {
+    @include content-grid-for-breakpoint(lg);
+  }
+
+  @include respond-to(xl) {
+    @include content-grid-for-breakpoint(xl);
+  }
+}
+
+/*
+ * ==========================================================
+ * Grid Column Span Utilities
+ * ==========================================================
+ * Description: Helper mixins for spanning columns in content grid
+ */
+
+@mixin span-columns($columns) {
+  grid-column: span $columns;
+}
+
+@mixin span-all-columns() {
+  grid-column: 1 / -1;
+}
+
+/*
+ * ==========================================================
+ * List Component Variables
+ * ==========================================================
+ */
+
+$list-gaps: (
+  none: spacing(0),
+  xs: spacing(1),
+  sm: spacing(2),
+  md: spacing(4),
+  lg: spacing(6),
+  xl: spacing(8),
+  xxl: spacing(12),
+);
+
+@function list-gap($key) {
+  @return map.get($list-gaps, $key);
 }

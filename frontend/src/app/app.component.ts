@@ -2,7 +2,9 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { ToolBar } from './components/core/toolbar/toolbar.component';
+import { ToolBar } from '@components/core/toolbar/toolbar.component';
+import { NavBar } from '@components/core/navbar/navbar.component';
+import { SidePanelService } from '@services/core/side-panel.service';
 import { LucideIconService } from './services/lucide-icon.service';
 
 @Component({
@@ -18,11 +20,12 @@ import { LucideIconService } from './services/lucide-icon.service';
     MatSidenavModule,
     MatIconModule,
     // Internal Components
-    ToolBar,
+    NavBar,
   ],
 })
 export class AppComponent {
   readonly lucideIconService = inject(LucideIconService);
+  readonly sidePanelService = inject(SidePanelService);
   // The title of the applicati
   title = 'frontend';
 }

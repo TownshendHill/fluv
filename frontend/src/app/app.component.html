@@ -1,14 +1,25 @@
-<div class="container">
-  <header class="header">
-    <fluv-toolbar> </fluv-toolbar>
-  </header>
-  <main class="main">
-    <router-outlet />
-  </main>
-  <footer class="footer">
-    <mat-icon svgIcon="repeat"></mat-icon>
+<mat-sidenav-container>
+  <mat-sidenav
+    mode="over"
+    position="end"
+    [opened]="sidePanelService.isOpen()"
+    (closed)="sidePanelService.close()"
+  >
+    <!-- <fluv-sidenav-content /> -->
+  </mat-sidenav>
 
-    <!-- OR use the namespaced icon from the sprite (if you want to use the icon from the sprite) -->
-    <mat-icon svgIcon="lucide:repeat" color="primary"></mat-icon>
-  </footer>
-</div>
+  <mat-sidenav-content>
+    <div class="container">
+      <header class="header">
+        <fluv-navbar />
+      </header>
+      <main class="main">
+        <router-outlet />
+      </main>
+      <footer class="footer">
+        <mat-icon svgIcon="repeat"></mat-icon>
+        <mat-icon svgIcon="lucide:repeat" color="primary"></mat-icon>
+      </footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

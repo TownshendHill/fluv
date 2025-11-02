@@ -1,0 +1,52 @@
+<!-- navbar-mobile/navbar-mobile.component.html -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    position="end"
+    [opened]="isOpen()"
+    (closed)="closeMenu.emit()"
+  >
+    <div class="sidenav-header">
+      <button mat-icon-button (click)="sidenav.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <div class="sidenav-content">
+      @for (item of menuItems(); track item.path) {
+        @if (!item.children) {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="active"
+            class="menu-item"
+            (click)="sidenav.close()"
+          >
+            {{ item.label }}
+          </a>
+        } @else {
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ item.label }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            @for (child of item.children; track child.path) {
+              <a
+                [routerLink]="child.path"
+                routerLinkActive="active"
+                class="submenu-item"
+                (click)="sidenav.close()"
+              >
+                {{ child.label }}
+              </a>
+            }
+          </mat-expansion-panel>
+        }
+      }
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content></mat-sidenav-content>
+</mat-sidenav-container>
