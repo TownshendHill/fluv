@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { ToolBar } from '@components/core/toolbar/toolbar.component';
 import { NavBar } from '@components/core/navbar/navbar.component';
-import { SidePanelService } from '@services/core/side-panel.service';
+import { SidePanelService } from '@services/core/layout/side-panel.service';
 import { LucideIconService } from './services/lucide-icon.service';
+import { SideNavComponent } from '@components/core/side-nav/side-nav.component';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +19,10 @@ import { LucideIconService } from './services/lucide-icon.service';
     // Angular Material Components
     MatSidenavModule,
     MatIconModule,
+
     // Internal Components
     NavBar,
+    SideNavComponent,
   ],
 })
 export class AppComponent {

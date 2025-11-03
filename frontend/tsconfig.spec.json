@@ -9,7 +9,8 @@
       "@components/*": ["./src/app/components/*"],
       "@services/*": ["./src/app/services/*"],
       "@shared/*": ["./src/app/shared/*"],
-      "@types/*": ["./src/app/types/*"]
+      "@types/*": ["./src/app/types/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]

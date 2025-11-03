@@ -7,11 +7,11 @@ export class ServicesHomePageConfig extends PageConfig {
 
   readonly navButtonConfig: NavButtonConfig = {
     menuItemVariant: 'nav-config',
-    label: '服務項目',
-    buttonVariant: ButtonVariant.ICON_LABEL,
-    icon: 'settings_ethernet',
+    label: this.pageTitle,
+    buttonVariant: ButtonVariant.LABEL,
+    icon: 'paw-print',
     iconType: IconType.LUCIDE_MATERIAL,
-    theme: 'primary',
+    theme: 'base',
     routerLink: ['/services'],
   };
 

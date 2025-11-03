@@ -25,4 +25,7 @@ export abstract class PageConfig {
 
   // Redirect to parent page
   redirectTo?: string | RedirectFunction;
+
+  // Whether to include in sitemap
+  skipInNav?: boolean;
 }

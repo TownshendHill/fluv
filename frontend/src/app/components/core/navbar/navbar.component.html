@@ -5,16 +5,9 @@
     </div>
 
     @if (isDesktop()) {
-      <fluv-group>
-        @for (item of menuItems(); track item.path) {
-          <a
-            [routerLink]="item.path"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: item.path === '/home' }"
-            class="menu-item"
-          >
-            {{ item.label }}
-          </a>
+      <fluv-group gap="md">
+        @for (navButton of navButtonConfigs(); track navButton.label) {
+          <fluv-nav-button [navConfig]="navButton"></fluv-nav-button>
         }
       </fluv-group>
     } @else {

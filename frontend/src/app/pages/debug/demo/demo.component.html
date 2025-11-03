@@ -1,7 +1,7 @@
 <p>demo works!</p>
 <div class="container">
   <fluv-list gap="md">
-    <fluv-group>
+    <fluv-group gap="md">
       @for (navButton of navButtons; track navButton.label) {
         <fluv-nav-button [navConfig]="navButton"></fluv-nav-button>
       }

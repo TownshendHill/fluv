@@ -8,11 +8,9 @@ export class HouseSittingPageConfig extends PageConfig {
 
   readonly navButtonConfig: NavButtonConfig = {
     menuItemVariant: 'nav-config',
-    label: 'Services',
-    buttonVariant: ButtonVariant.ICON_LABEL,
-    icon: 'settings_ethernet',
-    iconType: IconType.LUCIDE_MATERIAL,
-    theme: 'primary',
+    label: this.pageTitle,
+    buttonVariant: ButtonVariant.LABEL,
+    theme: 'base',
     routerLink: ['/services/house-sitting'],
   };
 

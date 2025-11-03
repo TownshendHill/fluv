@@ -60,6 +60,7 @@
     }
   }
 
+  // fonts
   &.icon-label-flat,
   &.icon-label,
   &.label {
@@ -129,6 +130,7 @@
     }
   }
 
+  &.icon,
   &.icon-label,
   &.label {
     &.primary {
@@ -186,16 +188,12 @@
         );
       }
     }
-  }
 
-  &.icon {
     &.base {
       button {
-        // hover styling
-        @include mat.icon-button-overrides(
+        @include mat.button-overrides(
           (
-            hover-state-layer-opacity: 1,
-            state-layer-color: tokens.$base-control,
+            text-label-text-color: tokens.$base-control,
           )
         );
       }
@@ -207,10 +205,32 @@
           )
         );
       }
+    }
 
-      &:hover {
+    &.icon {
+      &.base {
+        button {
+          // hover styling
+          @include mat.icon-button-overrides(
+            (
+              hover-state-layer-opacity: 1,
+              state-layer-color: tokens.$base-control,
+            )
+          );
+        }
+
         .mat-icon {
-          color: tokens.$base-surface;
+          @include mat.icon-overrides(
+            (
+              color: tokens.$base-control,
+            )
+          );
+        }
+
+        &:hover {
+          .mat-icon {
+            color: tokens.$base-surface;
+          }
         }
       }
     }
