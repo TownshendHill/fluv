@@ -1,0 +1,33 @@
+<fluv-list gap="md">
+  @for (item of menuItems(); track item.path) {
+    <fluv-group
+      justify="space-between"
+      align="center"
+      (click)="toggleExpand(item.path)"
+      class="expand-button"
+    >
+      <fluv-nav-button
+        [navConfig]="item.config.navButtonConfig"
+      ></fluv-nav-button>
+      @if (hasChildren(item)) {
+        <button mat-icon-button>
+          <mat-icon [class.expanded]="isExpanded(item.path)">
+            chevron_right
+          </mat-icon>
+        </button>
+      }
+    </fluv-group>
+
+    @if (hasChildren(item) && isExpanded(item.path)) {
+      <div @expandCollapse>
+        <fluv-list gap="sm" class="nested-items">
+          @for (child of item.children; track child.path) {
+            <fluv-nav-button
+              [navConfig]="child.config.navButtonConfig"
+            ></fluv-nav-button>
+          }
+        </fluv-list>
+      </div>
+    }
+  }
+</fluv-list>

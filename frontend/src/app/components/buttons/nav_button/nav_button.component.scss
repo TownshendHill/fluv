@@ -1,0 +1,238 @@
+@use "@angular/material" as mat;
+@use "../../../../styles/fluv-theme-typography.scss" as fonts;
+@use "../../../../styles/variables.scss" as tokens;
+@use "../../../../styles/fluv-theme-colors.scss" as colors;
+
+@mixin transition {
+  transition: all 0.2s ease-in-out;
+}
+
+:host {
+  .label {
+    @include fonts.label-medium;
+    word-break: keep-all;
+  }
+
+  &.fab {
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    text-align: center;
+
+    ::ng-deep .mat-mdc-button .mat-mdc-button-persistent-ripple::before {
+      @include transition;
+    }
+
+    button,
+    a {
+      height: 7rem;
+      width: 7rem;
+      transition: all 1s ease-in;
+
+      @include mat.button-overrides(
+        (
+          text-container-shape: 100rem,
+          text-state-layer-color: tokens.$emphasis-primary,
+          text-hover-state-layer-opacity: 1,
+        )
+      );
+
+      .mat-icon {
+        color: colors.$emphasis-primary;
+        margin-bottom: 0.25rem;
+      }
+
+      .label {
+        color: colors.$emphasis-primary;
+      }
+
+      .mat-icon,
+      .label {
+        @include transition;
+      }
+
+      &:hover {
+        .mat-icon,
+        .label {
+          color: colors.$base-control;
+        }
+      }
+    }
+  }
+
+  // fonts
+  &.icon-label-flat,
+  &.icon-label,
+  &.label {
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    text-align: center;
+
+    .mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    @include mat.button-overrides(
+      (
+        filled-label-text-font: tokens.$title-m-font-family,
+        filled-label-text-size: tokens.$title-m-font-size,
+        filled-label-text-weight: tokens.$title-m-font-weight,
+        filled-label-text-tracking: tokens.$title-m-letter-spacing,
+        text-label-text-font: tokens.$title-m-font-family,
+        text-label-text-size: tokens.$title-m-font-size,
+        text-label-text-weight: tokens.$title-m-font-weight,
+        text-label-text-tracking: tokens.$title-m-letter-spacing,
+      )
+    );
+  }
+
+  &.icon-label-flat {
+    &.primary {
+      button {
+        @include mat.button-overrides(
+          (
+            filled-container-color: tokens.$emphasis-primary,
+            filled-label-text-color: tokens.$base-control,
+            filled-state-layer-color: tokens.$base-surface,
+            filled-hover-state-layer-opacity: 1,
+          )
+        );
+      }
+
+      .mat-icon {
+        @include mat.icon-overrides(
+          (
+            color: tokens.$base-control,
+          )
+        );
+      }
+    }
+
+    &.secondary {
+      button {
+        @include mat.button-overrides(
+          (
+            filled-label-text-color: tokens.$base-text-main,
+          )
+        );
+      }
+
+      .mat-icon {
+        @include mat.icon-overrides(
+          (
+            color: tokens.$emphasis-primary,
+          )
+        );
+      }
+    }
+  }
+
+  &.icon,
+  &.icon-label,
+  &.label {
+    &.primary {
+      button {
+        @include mat.button-overrides(
+          (
+            text-container-shape: 100rem,
+            text-state-layer-color: tokens.$emphasis-primary,
+            text-hover-state-layer-opacity: 1,
+          )
+        );
+      }
+
+      .mat-icon {
+        @include mat.icon-overrides(
+          (
+            color: tokens.$base-control,
+          )
+        );
+      }
+    }
+
+    &.secondary {
+      button {
+        @include mat.button-overrides(
+          (
+            text-label-text-color: tokens.$base-text-main,
+          )
+        );
+      }
+
+      .mat-icon {
+        @include mat.icon-overrides(
+          (
+            color: tokens.$emphasis-primary,
+          )
+        );
+      }
+    }
+
+    &.emphasis {
+      button {
+        @include mat.button-overrides(
+          (
+            text-label-text-color: tokens.$emphasis-primary,
+          )
+        );
+      }
+
+      .mat-icon {
+        @include mat.icon-overrides(
+          (
+            color: tokens.$emphasis-primary,
+          )
+        );
+      }
+    }
+
+    &.base {
+      button {
+        @include mat.button-overrides(
+          (
+            text-label-text-color: tokens.$base-control,
+          )
+        );
+      }
+
+      .mat-icon {
+        @include mat.icon-overrides(
+          (
+            color: tokens.$base-control,
+          )
+        );
+      }
+    }
+
+    &.icon {
+      &.base {
+        button {
+          // hover styling
+          @include mat.icon-button-overrides(
+            (
+              hover-state-layer-opacity: 1,
+              state-layer-color: tokens.$base-control,
+            )
+          );
+        }
+
+        .mat-icon {
+          @include mat.icon-overrides(
+            (
+              color: tokens.$base-control,
+            )
+          );
+        }
+
+        &:hover {
+          .mat-icon {
+            color: tokens.$base-surface;
+          }
+        }
+      }
+    }
+  }
+}

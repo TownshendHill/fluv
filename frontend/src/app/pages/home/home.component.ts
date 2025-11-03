@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { NavButton } from '../../components/buttons/nav_button/nav_button.component';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
     // Material Modules
     MatButtonModule,
     MatIconModule,
+
+    // Internal Components
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

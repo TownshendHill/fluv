@@ -1,11 +1,20 @@
 @use "@angular/material" as mat;
 @use "./styles/fluv-theme-typography.scss" as *;
 @use "fluv-layout" as layout;
-@use "variables" as tokens;
+@use "./styles/variables.scss" as tokens;
 
 :root {
-  --fluv-body-large-size: 10px;
+  // --fluv-body-large-size: 10px;
   --fluv-gutter: #{layout.gutter("sm")};
+
+  // spacing tokens
+  --spacing-none: #{layout.spacing(0)};
+  --spacing-xs: #{layout.spacing(1)};
+  --spacing-sm: #{layout.spacing(2)};
+  --spacing-md: #{layout.spacing(4)};
+  --spacing-lg: #{layout.spacing(6)};
+  --spacing-xl: #{layout.spacing(8)};
+  --spacing-xxl: #{layout.spacing(12)};
 
   @include mat.theme($fluv-theme-config);
   @include mat.typography-hierarchy($fluv-theme);
@@ -23,19 +32,17 @@
   }
 
   // icon overrides
-  button {
+  .mat-icon {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+
     @include mat.icon-overrides(
       (
-        color: tokens.$fluv-contrast-90,
+        color: tokens.$fluv-primary-40,
       )
     );
   }
-
-  @include mat.icon-overrides(
-    (
-      color: tokens.$fluv-primary-40,
-    )
-  );
 }
 
 *,

@@ -1,0 +1,15 @@
+<p>demo works!</p>
+<div class="container">
+  <fluv-list gap="md">
+    <fluv-group gap="md">
+      @for (navButton of navButtons; track navButton.label) {
+        <fluv-nav-button [navConfig]="navButton"></fluv-nav-button>
+      }
+    </fluv-group>
+    <fluv-list gap="lg">
+      @for (navButton of navButtons; track navButton.label) {
+        <fluv-nav-button [navConfig]="navButton"></fluv-nav-button>
+      }
+    </fluv-list>
+  </fluv-list>
+</div>

@@ -27,3 +27,11 @@ $fluv-theme-config: (
 );
 
 $fluv-theme: mat.define-theme($fluv-theme-config);
+
+@mixin label-medium {
+  font-family: tokens.$label-m-font-family;
+  font-size: tokens.$label-m-font-size;
+  font-weight: tokens.$label-m-font-weight;
+  line-height: tokens.$label-m-line-height;
+  letter-spacing: tokens.$label-m-letter-spacing;
+}
