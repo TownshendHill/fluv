@@ -1,0 +1,5 @@
+<fluv-group justify="space-evenly" align="center">
+  @for (navButtonConfig of navButtonConfigs; track navButtonConfig.label) {
+    <fluv-nav-button [navConfig]="navButtonConfig"></fluv-nav-button>
+  }
+</fluv-group>

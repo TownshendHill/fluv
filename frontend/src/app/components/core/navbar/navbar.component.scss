@@ -1,9 +1,10 @@
 @use "@angular/material" as mat;
-@use "fluv-layout" as layout;
+@use "@styles/fluv-layout.scss" as layout;
 @use "variables" as tokens;
 
 :host {
   display: block;
+  @include layout.span-all-columns();
   @include mat.toolbar-overrides(
     (
       container-background-color: tokens.$fluv-primary-50,
@@ -12,7 +13,8 @@
 
   .toolbar-content {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    @include layout.content-padding();
   }
 
   .logo {

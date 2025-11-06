@@ -1,0 +1,16 @@
+@use "@angular/material" as mat;
+
+:host {
+  mat-card {
+    padding: 1rem;
+    @include mat.card-overrides(
+      (
+        elevated-container-elevation: 0.25rem 0.5rem 0.75rem rgba(0, 0, 0, 0.1),
+      )
+    );
+
+    img {
+      border-radius: 2rem;
+    }
+  }
+}

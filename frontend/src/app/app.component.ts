@@ -6,6 +6,8 @@ import { NavBar } from '@components/core/navbar/navbar.component';
 import { SidePanelService } from '@services/core/layout/side-panel.service';
 import { LucideIconService } from './services/lucide-icon.service';
 import { SideNavComponent } from '@components/core/side-nav/side-nav.component';
+import { BottomNavComponent } from '@components/mobile/bottom-nav/bottom-nav.component';
+import { BreakpointService } from '@services/core/layout/breakpoint.service';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +23,7 @@ import { SideNavComponent } from '@components/core/side-nav/side-nav.component';
     MatIconModule,
 
     // Internal Components
+    BottomNavComponent,
     NavBar,
     SideNavComponent,
   ],
@@ -28,6 +31,7 @@ import { SideNavComponent } from '@components/core/side-nav/side-nav.component';
 export class AppComponent {
   readonly lucideIconService = inject(LucideIconService);
   readonly sidePanelService = inject(SidePanelService);
+  readonly breakpointService = inject(BreakpointService);
   // The title of the applicati
   title = 'frontend';
 }

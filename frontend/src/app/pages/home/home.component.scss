@@ -1,0 +1,19 @@
+@use "@styles/fluv-layout.scss" as layout;
+
+:host {
+  .cards-container {
+    @include layout.content-grid();
+
+    fluv-card {
+      @include layout.span-columns(4);
+
+      @include layout.respond-to(lg) {
+        @include layout.span-columns(6);
+      }
+
+      @include layout.respond-to(sm) {
+        @include layout.span-columns(4);
+      }
+    }
+  }
+}

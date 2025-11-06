@@ -2,34 +2,35 @@
 @use "../styles/fluv-layout.scss" as layout;
 @use "../styles/variables.scss" as tokens;
 
-.container {
-  // App structural layout: header/main/footer rows
-  @include layout.app-structure-grid();
-
-  // NO padding on container - some elements need full width
-
-  .header {
-    grid-row: header;
-    // Full width - no padding
-  }
-
-  .main {
-    grid-row: main;
-    // Apply padding here instead
-    @include layout.content-padding();
-  }
-
-  .footer {
-    grid-row: footer;
-    // Full width - no padding
-  }
-}
-
 :host {
-  @include mat.sidenav-overrides(
-    (
-      container-shape: 0,
-      container-background-color: tokens.$base-surface,
-    )
-  );
+  // mat-sidenav-container {
+  //   @include layout.content-grid();
+  // }
+  mat-sidenav {
+    @include mat.sidenav-overrides(
+      (
+        container-shape: 0,
+        container-background-color: tokens.$base-surface,
+        container-width: 20rem,
+      )
+    );
+  }
+
+  .container {
+    // App structural layout: header/main/footer rows
+    @include layout.app-structure-grid();
+
+    .header {
+      grid-row: header;
+    }
+
+    .main {
+      grid-row: main;
+      @include layout.content-padding();
+    }
+
+    .footer {
+      grid-row: footer;
+    }
+  }
 }
