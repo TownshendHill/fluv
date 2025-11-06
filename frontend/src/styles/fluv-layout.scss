@@ -6,33 +6,33 @@
  * ==========================================================
  */
 
-$spacing-base: 0.25rem;
+$spacing-base: 1rem;
 
 $spacing: (
   0: 0,
-  1: $spacing-base * 1,
+  1: $spacing-base * 0.4,
   // 4px
-  2: $spacing-base * 2,
+  2: $spacing-base * 0.8,
   // 8px
-  3: $spacing-base * 3,
+  3: $spacing-base * 1.2,
   // 12px
-  4: $spacing-base * 4,
+  4: $spacing-base * 1.6,
   // 16px
-  5: $spacing-base * 5,
+  5: $spacing-base * 2,
   // 20px
-  6: $spacing-base * 6,
+  6: $spacing-base * 2.4,
   // 24px
-  8: $spacing-base * 8,
+  8: $spacing-base * 3.2,
   // 32px
-  10: $spacing-base * 10,
+  10: $spacing-base * 4,
   // 40px
-  12: $spacing-base * 12,
+  12: $spacing-base * 4.8,
   // 48px
-  16: $spacing-base * 16,
+  16: $spacing-base * 6.4,
   // 64px
-  20: $spacing-base * 20,
+  20: $spacing-base * 8,
   // 80px
-  24: $spacing-base * 24, // 96px
+  24: $spacing-base * 9.6, // 96px
 );
 
 @function spacing($key) {
