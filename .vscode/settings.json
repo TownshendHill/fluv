@@ -1,4 +1,6 @@
 {
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"prettier.singleAttributePerLine": true
+	"prettier.singleAttributePerLine": true,
+	"typescript.tsdk": "frontend/node_modules/typescript/lib",
+	"typescript.enablePromptUseWorkspaceTsdk": true
 }
