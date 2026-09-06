@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "@styles/fluv-theme-colors.scss" as colors;
+@use "fluv-theme-colors" as colors;
 
 :host {
   display: block;
