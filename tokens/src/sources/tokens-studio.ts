@@ -19,13 +19,22 @@ import path from "node:path";
  *
  * Listing transforms explicitly REPLACES the transform group that register()
  * installs rather than extending it, so anything omitted here is switched off.
- * Currently off and worth restoring deliberately: ts/resolveMath (without it
- * "8 * 2" emits "8px * 2px"), ts/color/modifiers, ts/size/lineheight, and the
- * built-in CSS transforms. Nothing in the token file uses those features yet.
+ * The list below restores the group's members that this project had lost, each
+ * verified to leave the current output unchanged.
+ *
+ * ts/size/lineheight is deliberately absent. It targets the same tokens as
+ * custom/size/lineHeightPx and produces different values, so the two together
+ * work only because ours runs last. Reordering would silently change output.
  */
 export const tokensStudioTransforms: string[] = [
+  "ts/descriptionToComment",
+  "ts/resolveMath",
   "ts/size/px",
   "ts/opacity",
+  "ts/color/modifiers",
+  "ts/color/css/hexrgba",
+  "ts/size/css/letterspacing",
+  "ts/shadow/innerShadow",
   "name/kebab",
   "ts/typography/fontWeight",
   "custom/size/lineHeightPx",

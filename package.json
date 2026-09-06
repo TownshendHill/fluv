@@ -6,6 +6,7 @@
     "build": "pnpm --filter @fluv/tokens build && pnpm --filter frontend build",
     "start": "pnpm --filter frontend start",
     "test": "pnpm --filter frontend exec ng test",
-    "tokens": "pnpm --filter @fluv/tokens build"
+    "tokens": "pnpm --filter @fluv/tokens build",
+    "typecheck": "pnpm --filter @fluv/tokens typecheck"
   }
 }
