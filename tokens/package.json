@@ -1,0 +1,17 @@
+{
+  "name": "@fluv/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Design tokens exported from Figma via Tokens Studio, built with Style Dictionary.",
+  "scripts": {
+    "build": "node scripts/build-output.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "@types/node": "^22.0.0",
+    "style-dictionary": "^5.5.2",
+    "typescript": "~5.8.3"
+  }
+}
