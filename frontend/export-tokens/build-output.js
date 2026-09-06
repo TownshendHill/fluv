@@ -1,8 +1,4 @@
-import {
-  register,
-  expandTypesMap,
-  permutateThemes,
-} from "@tokens-studio/sd-transforms";
+import { register, expandTypesMap } from "@tokens-studio/sd-transforms";
 import StyleDictionary from "style-dictionary";
 import { readFile, writeFile, mkdir } from "fs/promises";
 import {
@@ -164,6 +160,11 @@ async function splitTokensIntoFiles() {
 
   // Save all sets as files
   await Promise.all(Object.entries(sets).map(persistSet));
+
+  // Persist $metadata so tokenSetOrder stays in step with the source. Without it
+  // the preprocessor falls back to glob order, and a stale copy silently drops
+  // whole token sets.
+  await persistSet(["$metadata", $metadata]);
 }
 
 // Execute the main function

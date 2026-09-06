@@ -1,6 +1,15 @@
 
 // Do not edit directly, this file was auto-generated.
 
+$container-height: 120px;
+$container-horizontal-padding: 16px;
+$container-top-padding: 48px;
+$container-bottom-padding: 16px;
+$icon-button-default-logo-height: 32px;
+$icon-button-default-icon-size: 24px;
+$icon-button-default-border-radius: 32px;
+$icon-button-default-padding: 4px;
+$icon-button-default-logo-width: 130px;
 $font-families-android-ch: Noto Sans TC;
 $line-height-display-l: 41px;
 $line-height-display-m: 34px;
@@ -207,3 +216,7 @@ $main-surface: $fluv-contrast-95;
 $emphasis-alert: $fluv-contrast-50;
 $emphasis-primary: $fluv-primary-20;
 $hover-mask: $mask-netural70-30;
+$container-background-color: $base-surface;
+$icon-button-default-icon-color: $base-control;
+$icon-button-pressed-icon-color: $base-surface;
+$icon-button-pressed-background-color: $base-control;
