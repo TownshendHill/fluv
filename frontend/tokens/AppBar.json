@@ -1,0 +1,62 @@
+{
+  "container": {
+    "height": {
+      "value": "120px",
+      "type": "sizing"
+    },
+    "backgroundColor": {
+      "value": "{base.surface}",
+      "type": "color"
+    },
+    "horizontalPadding": {
+      "value": "16px",
+      "type": "spacing"
+    },
+    "topPadding": {
+      "value": "48px",
+      "type": "spacing"
+    },
+    "bottomPadding": {
+      "value": "16px",
+      "type": "spacing"
+    }
+  },
+  "iconButton": {
+    "default": {
+      "logoHeight": {
+        "value": "32px",
+        "type": "sizing"
+      },
+      "iconSize": {
+        "value": "24px",
+        "type": "sizing"
+      },
+      "iconColor": {
+        "value": "{base.Control}",
+        "type": "color"
+      },
+      "borderRadius": {
+        "value": "32px",
+        "type": "borderRadius"
+      },
+      "padding": {
+        "value": "4px",
+        "type": "spacing"
+      },
+      "logoWidth": {
+        "value": "130px",
+        "type": "sizing"
+      }
+    },
+    "pressed": {
+      "iconColor": {
+        "value": "{base.surface}",
+        "type": "color"
+      },
+      "backgroundColor": {
+        "value": "{base.Control}",
+        "type": "color"
+      }
+    }
+  }
+}

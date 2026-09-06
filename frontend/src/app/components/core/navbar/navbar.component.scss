@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "@styles/fluv-layout.scss" as layout;
+@use "fluv-layout" as layout;
 @use "variables" as tokens;
 
 :host {
