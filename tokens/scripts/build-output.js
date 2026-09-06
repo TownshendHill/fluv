@@ -7,14 +7,21 @@ import {
   logWarningLevels,
 } from "style-dictionary/enums";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-/* File Path constants */
-const TOKENS_SRC_DIR = "./src/assets/tokens";
-const TOKENS_SRC_FILE = path.join(TOKENS_SRC_DIR, "tokens.json");
+/* Paths resolve from this file rather than the working directory, so the script
+   behaves the same however it is invoked. */
+const PKG_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const REPO_ROOT = path.resolve(PKG_ROOT, "..");
 
-const TOKENS_DEST_DIR = "./tokens";
+/* Figma export, written by Tokens Studio */
+const TOKENS_SRC_FILE = path.join(PKG_ROOT, "source", "tokens.json");
 
-const BUILD_DEST_DIR = "./src/styles/";
+/* Intermediate: the export split into one file per token set */
+const TOKENS_DEST_DIR = path.join(PKG_ROOT, "build");
+
+/* Output consumed by the Angular app */
+const BUILD_DEST_DIR = path.join(REPO_ROOT, "frontend", "src", "styles") + path.sep;
 
 /**
  * 1: REGISTER SD-TRANSFORMS CAPABILITIES

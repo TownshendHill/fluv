@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+out-tsc/
+storybook-static/
+
+# OS / editor cruft
+.DS_Store
+*.log

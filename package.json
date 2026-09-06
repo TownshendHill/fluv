@@ -1,0 +1,11 @@
+{
+  "name": "fluv",
+  "private": true,
+  "description": "Pet care marketplace. Angular web app plus a shared design token package.",
+  "scripts": {
+    "build": "pnpm --filter @fluv/tokens build && pnpm --filter frontend build",
+    "start": "pnpm --filter frontend start",
+    "test": "pnpm --filter frontend exec ng test",
+    "tokens": "pnpm --filter @fluv/tokens build"
+  }
+}
