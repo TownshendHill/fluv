@@ -39,7 +39,7 @@ const LIST_GAP_MAP: Record<SpacingToken, string> = {
   },
 })
 export class List {
-  readonly overflow? = input<string>('hidden');
+  readonly overflow = input<string>('hidden');
   readonly gap = input<SpacingToken | string>('none');
 
   // Computed property to resolve gap value

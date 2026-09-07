@@ -5,7 +5,7 @@ import {
   computed,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { BreakpointService } from '@services/core/layout/breakpoint.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,17 +17,7 @@ import { NavigationService } from '@services/core/navigation/navigation.service'
 
 @Component({
   selector: 'fluv-navbar',
-  imports: [
-    CommonModule,
-    RouterModule,
-
-    // Angular Material Components
-    MatToolbarModule,
-
-    // Internal Components
-    Group,
-    NavButton,
-  ],
+  imports: [RouterModule, MatToolbarModule, Group, NavButton],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
