@@ -8,5 +8,6 @@
     "test": "pnpm --filter frontend exec ng test",
     "tokens": "pnpm --filter @fluv/tokens build",
     "typecheck": "pnpm --filter @fluv/tokens typecheck"
-  }
+  },
+  "packageManager": "pnpm@10.14.0"
 }
