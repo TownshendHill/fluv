@@ -3,6 +3,12 @@
 @use "fluv-layout" as layout;
 @use "./styles/variables.scss" as tokens;
 
+// Emit once for the whole app. Previously these lived in
+// fluv-theme-typography.scss, which component stylesheets @use, so each of
+// them carried a scoped copy of all 50 elevation classes.
+@include mat.elevation-classes();
+@include mat.app-background();
+
 :root {
   // --fluv-body-large-size: 10px;
   --fluv-gutter: #{layout.gutter("sm")};

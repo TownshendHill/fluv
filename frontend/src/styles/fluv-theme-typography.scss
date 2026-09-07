@@ -2,7 +2,10 @@
 @use "./fluv-theme-colors.scss" as fluvtheme;
 @use "./variables.scss" as tokens;
 
-@include mat.core(); // required once in the app
+// This file defines the theme config and typography mixins. It must not emit
+// CSS at module level: component stylesheets @use it, and anything emitted
+// here is duplicated into every one of them. The app-level Material includes
+// live in src/styles.scss.
 
 $fluv-theme-config: (
   color: (
