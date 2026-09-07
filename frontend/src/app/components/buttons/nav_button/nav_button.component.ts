@@ -9,13 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import {
-  LucideAngularModule,
-  FileIcon,
-  House,
-  Menu,
-  UserCheck,
-} from 'lucide-angular';
-import {
   type NavButtonConfig,
   ButtonVariant,
   IconType,
@@ -32,9 +25,6 @@ const DEFAULT_NAV_CONFIG = ButtonVariant.ICON_LABEL;
     MatIconModule,
     // Common Modules
     RouterModule,
-
-    // Other Modules
-    LucideAngularModule,
   ],
   templateUrl: './nav_button.component.html',
   styleUrl: './nav_button.component.scss',

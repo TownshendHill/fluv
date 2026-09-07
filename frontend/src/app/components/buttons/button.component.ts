@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-button',
   standalone: true,
   imports: [],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.scss'
+  changeDetection: ChangeDetectionStrategy.Eager,
+  styleUrl: './button.component.scss',
 })
-export class ButtonComponent {
-
-}
+export class ButtonComponent {}
