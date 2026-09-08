@@ -12,6 +12,6 @@
     "@tokens-studio/sd-transforms": "^2.0.3",
     "@types/node": "^22.0.0",
     "style-dictionary": "^5.5.2",
-    "typescript": "~5.8.3"
+    "typescript": "~6.0.3"
   }
 }
