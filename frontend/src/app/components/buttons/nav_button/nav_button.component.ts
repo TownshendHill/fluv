@@ -47,8 +47,15 @@ export class NavButton {
   );
   label = computed<string | undefined>(() => this.navConfig()?.label);
   icon = computed<string | undefined>(() => this.navConfig()?.icon);
-  isLucideMaterialIcon = computed<boolean>(
-    () => this.navConfig()?.iconType === IconType.LUCIDE_MATERIAL,
+  isSvgIcon = computed<boolean>(
+    () => {
+      const type = this.navConfig()?.iconType;
+      return (
+        type === IconType.LUCIDE_MATERIAL ||
+        type === IconType.LUCIDE ||
+        type === IconType.CUSTOM_SVG
+      );
+    },
   );
 
   // Utility classes for theme and button type
