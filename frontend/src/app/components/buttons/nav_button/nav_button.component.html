@@ -7,7 +7,7 @@
   }
   @case (Variant.ICON_LABEL_FLAT) {
     <button mat-flat-button [routerLink]="routerLink()">
-      @if (isLucideMaterialIcon()) {
+      @if (isSvgIcon()) {
         <mat-icon [svgIcon]="`fluv:${icon()}`"></mat-icon>
       } @else {
         <mat-icon>{{ icon() }}</mat-icon>
@@ -17,7 +17,7 @@
   }
   @case (Variant.ICON_LABEL) {
     <button mat-button [routerLink]="routerLink()">
-      @if (isLucideMaterialIcon()) {
+      @if (isSvgIcon()) {
         <mat-icon [svgIcon]="`fluv:${icon()}`"></mat-icon>
       } @else {
         <mat-icon>{{ icon() }}</mat-icon>
@@ -39,7 +39,7 @@
 
 <!-- TODO: Might need to refactor, as this does not achieve dry code due to material icon projection -->
 <ng-template #iconContent>
-  @if (isLucideMaterialIcon()) {
+  @if (isSvgIcon()) {
     <mat-icon [svgIcon]="`fluv:${icon()}`"></mat-icon>
   } @else {
     <mat-icon>{{ icon() }}</mat-icon>
