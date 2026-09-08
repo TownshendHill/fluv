@@ -84,10 +84,10 @@ const meta: Meta<NavButtonArgs> = {
           'produce an empty button. They are shown in their own story rather than',
           'mixed in with the working ones. See issue #13.',
           '',
-'`IconType` has four values and three behaviours. `LUCIDE_MATERIAL` draws from',
-          'the SVG sprite, `LUCIDE` renders a live Lucide component, and `MATERIAL`',
-          'uses a Material Icons ligature. `CUSTOM_SVG` has no case of its own and',
-          'falls through to the Material path. See issue #21.',
+'`IconType` has four values and three behaviours. `LUCIDE_MATERIAL` and',
+          '`CUSTOM_SVG` both draw from the SVG sprite, `LUCIDE` renders a live Lucide',
+          'component, and `MATERIAL` uses a Material Icons ligature. The first two',
+          'are still indistinguishable, which is the remainder of issue #21.',
           '',
           'The paths use different icon name spaces. The sprite and Lucide both use',
           '`user-search`; Material Icons has `search`. Only `search`, `info`, `menu`',
@@ -142,8 +142,8 @@ const meta: Meta<NavButtonArgs> = {
       control: 'select',
       options: Object.values(IconType).filter((t) => t !== IconType.UNDEFINED),
       description:
-        'Four values, three behaviours. CUSTOM_SVG has no case and falls ' +
-        'through to MATERIAL.',
+        'Four values, three behaviours. LUCIDE_MATERIAL and CUSTOM_SVG are ' +
+        'still identical.',
       table: { category: 'NavButtonConfig fields' },
     },
     buttonVariant: {
@@ -262,15 +262,15 @@ export const IconTypes: Story = {
         { iconType: IconType.LUCIDE_MATERIAL, note: 'SVG sprite, via MatIconRegistry' },
         { iconType: IconType.LUCIDE, note: 'live Lucide component, via @lucide/angular' },
         { iconType: IconType.MATERIAL, note: 'Material Icons ligature' },
-        { iconType: IconType.CUSTOM_SVG, note: 'no case in the template, falls through to MATERIAL' },
+        { iconType: IconType.CUSTOM_SVG, note: 'SVG sprite, same path as LUCIDE_MATERIAL' },
       ].map((r) => ({ ...r, config: toConfig({ ...args, iconType: r.iconType }) })),
     },
     template: `
       <div style="display:flex;flex-direction:column;gap:1rem;padding:1rem">
         <p style="margin:0;font-size:.8rem;opacity:.75">
-          All four use the icon "{{ iconName }}", which exists in every name space.
-          The first two draw Lucide artwork by different mechanisms, the last two
-          are the same Material glyph.
+          All four use the icon "{{ iconName }}". The first and last draw the same
+          sprite symbol, the second draws the live Lucide component, and the third
+          is a Material glyph.
         </p>
         @for (row of rows; track row.iconType) {
           <div style="display:flex;gap:1rem;align-items:center">

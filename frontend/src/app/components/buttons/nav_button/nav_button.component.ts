@@ -52,9 +52,17 @@ export class NavButton {
   );
   label = computed<string | undefined>(() => this.navConfig()?.label);
   icon = computed<string | undefined>(() => this.navConfig()?.icon);
-  isLucideMaterialIcon = computed<boolean>(
-    () => this.navConfig()?.iconType === IconType.LUCIDE_MATERIAL,
-  );
+  /**
+   * Icon types drawn from the SVG sprite through MatIconRegistry.
+   *
+   * LUCIDE is deliberately not here. It renders a live Lucide component, and
+   * the template tests this condition first, so listing it would make that
+   * branch unreachable.
+   */
+  isSvgIcon = computed<boolean>(() => {
+    const type = this.navConfig()?.iconType;
+    return type === IconType.LUCIDE_MATERIAL || type === IconType.CUSTOM_SVG;
+  });
   isLucideIcon = computed<boolean>(
     () => this.navConfig()?.iconType === IconType.LUCIDE,
   );

@@ -37,7 +37,7 @@
   icon sizing and spacing, which target .mat-icon rather than a bare <svg>.
 -->
 <ng-template #iconContent>
-  @if (isLucideMaterialIcon()) {
+  @if (isSvgIcon()) {
     <mat-icon [svgIcon]="`fluv:${icon()}`"></mat-icon>
   } @else if (isLucideIcon()) {
     <mat-icon><svg [lucideIcon]="icon() ?? null"></svg></mat-icon>
