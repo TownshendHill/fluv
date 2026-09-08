@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/angular-vite';
+import { componentWrapperDecorator, type Preview } from '@storybook/angular-vite';
 
 // The app's global stylesheet. Without it components render with no Material
 // theme, no typography and none of the --spacing-* custom properties, and
@@ -22,6 +22,12 @@ const SURFACES = {
 };
 
 const preview: Preview = {
+  decorators: [
+    // index.html puts mat-typography on <body>, which the preview iframe does
+    // not inherit. Material's type scale is defined as descendant selectors, so
+    // wrapping the story in the class has the same effect.
+    componentWrapperDecorator((story) => `<div class="mat-typography">${story}</div>`),
+  ],
   parameters: {
     backgrounds: { options: SURFACES },
     controls: {
