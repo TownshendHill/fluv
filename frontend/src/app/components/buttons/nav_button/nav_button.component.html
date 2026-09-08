@@ -7,21 +7,13 @@
   }
   @case (Variant.ICON_LABEL_FLAT) {
     <button mat-flat-button [routerLink]="routerLink()">
-      @if (isLucideMaterialIcon()) {
-        <mat-icon [svgIcon]="`fluv:${icon()}`"></mat-icon>
-      } @else {
-        <mat-icon>{{ icon() }}</mat-icon>
-      }
+      <ng-container *ngTemplateOutlet="iconContent" />
       {{ label() }}
     </button>
   }
   @case (Variant.ICON_LABEL) {
     <button mat-button [routerLink]="routerLink()">
-      @if (isLucideMaterialIcon()) {
-        <mat-icon [svgIcon]="`fluv:${icon()}`"></mat-icon>
-      } @else {
-        <mat-icon>{{ icon() }}</mat-icon>
-      }
+      <ng-container *ngTemplateOutlet="iconContent" />
       {{ label() }}
     </button>
   }
@@ -37,10 +29,18 @@
   }
 }
 
-<!-- TODO: Might need to refactor, as this does not achieve dry code due to material icon projection -->
+<!--
+  One place that decides how an icon is drawn. Every variant above routes
+  through here, so a new IconType is a single edit.
+
+  The Lucide branch stays inside <mat-icon> so it inherits Material's button
+  icon sizing and spacing, which target .mat-icon rather than a bare <svg>.
+-->
 <ng-template #iconContent>
   @if (isLucideMaterialIcon()) {
     <mat-icon [svgIcon]="`fluv:${icon()}`"></mat-icon>
+  } @else if (isLucideIcon()) {
+    <mat-icon><svg [lucideIcon]="icon() ?? null"></svg></mat-icon>
   } @else {
     <mat-icon>{{ icon() }}</mat-icon>
   }
