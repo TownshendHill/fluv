@@ -11,6 +11,7 @@ import {
 
 import { NavButton } from './nav_button.component';
 import { LucideIconService } from '@services/lucide-icon.service';
+import { LUCIDE_ICONS } from '@constants/icons/lucide-icons';
 import {
   ButtonVariant,
   IconType,
@@ -83,14 +84,17 @@ const meta: Meta<NavButtonArgs> = {
           'produce an empty button. They are shown in their own story rather than',
           'mixed in with the working ones. See issue #13.',
           '',
-'`IconType` has four values and two behaviours. Only `LUCIDE_MATERIAL` uses',
-          'the SVG sprite. `MATERIAL`, `LUCIDE` and `CUSTOM_SVG` all fall through to',
-          'the same Material Icons ligature path, so the last two have no',
-          'implementation of their own. See issue #21.',
+'`IconType` has four values and three behaviours. `LUCIDE_MATERIAL` draws from',
+          'the SVG sprite, `LUCIDE` renders a live Lucide component, and `MATERIAL`',
+          'uses a Material Icons ligature. `CUSTOM_SVG` has no case of its own and',
+          'falls through to the Material path. See issue #21.',
           '',
-          'The two paths use different icon name spaces. The sprite has',
-          '`user-search`; Material Icons has `search`. Only `search`, `info`,',
-          '`menu` and `repeat` exist in both, so the default here is `search`.',
+          'The paths use different icon name spaces. The sprite and Lucide both use',
+          '`user-search`; Material Icons has `search`. Only `search`, `info`, `menu`',
+          'and `repeat` exist in all three, so the default here is `search`.',
+          '',
+          'Lucide only resolves names registered through `provideLucideIcons`, listed',
+          'in `constants/icons/lucide-icons.ts`.',
         ].join('\n'),
       },
     },
@@ -102,6 +106,8 @@ const meta: Meta<NavButtonArgs> = {
         provideRouter([]),
         provideHttpClient(),
         provideAnimationsAsync(),
+        // Registers the Lucide components that IconType.LUCIDE can name.
+        LUCIDE_ICONS,
         // Registers the sprite with MatIconRegistry in its constructor. Nothing
         // else in a story would instantiate it, and without it every svgIcon
         // resolves to nothing.
@@ -136,7 +142,8 @@ const meta: Meta<NavButtonArgs> = {
       control: 'select',
       options: Object.values(IconType).filter((t) => t !== IconType.UNDEFINED),
       description:
-        'Four values, two behaviours. Only LUCIDE_MATERIAL uses the sprite.',
+        'Four values, three behaviours. CUSTOM_SVG has no case and falls ' +
+        'through to MATERIAL.',
       table: { category: 'NavButtonConfig fields' },
     },
     buttonVariant: {
@@ -252,17 +259,18 @@ export const IconTypes: Story = {
     props: {
       iconName: args.icon,
       rows: [
-        { iconType: IconType.LUCIDE_MATERIAL, note: 'sprite SVG, the only implemented path' },
+        { iconType: IconType.LUCIDE_MATERIAL, note: 'SVG sprite, via MatIconRegistry' },
+        { iconType: IconType.LUCIDE, note: 'live Lucide component, via @lucide/angular' },
         { iconType: IconType.MATERIAL, note: 'Material Icons ligature' },
-        { iconType: IconType.LUCIDE, note: 'no case in the template, identical to MATERIAL' },
-        { iconType: IconType.CUSTOM_SVG, note: 'no case in the template, identical to MATERIAL' },
+        { iconType: IconType.CUSTOM_SVG, note: 'no case in the template, falls through to MATERIAL' },
       ].map((r) => ({ ...r, config: toConfig({ ...args, iconType: r.iconType }) })),
     },
     template: `
       <div style="display:flex;flex-direction:column;gap:1rem;padding:1rem">
         <p style="margin:0;font-size:.8rem;opacity:.75">
-          All four use the icon "{{ iconName }}", which exists in both name spaces.
-          The first is a sprite SVG; the other three are the same Material glyph.
+          All four use the icon "{{ iconName }}", which exists in every name space.
+          The first two draw Lucide artwork by different mechanisms, the last two
+          are the same Material glyph.
         </p>
         @for (row of rows; track row.iconType) {
           <div style="display:flex;gap:1rem;align-items:center">

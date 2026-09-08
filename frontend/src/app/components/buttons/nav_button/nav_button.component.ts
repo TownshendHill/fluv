@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { LucideDynamicIcon } from '@lucide/angular';
 import {
   type NavButtonConfig,
   ButtonVariant,
@@ -25,6 +26,10 @@ const DEFAULT_NAV_CONFIG = ButtonVariant.ICON_LABEL;
     MatIconModule,
     // Common Modules
     RouterModule,
+
+    // Renders a Lucide icon by name. Only icons registered through
+    // provideLucideIcons resolve, see constants/icons/lucide-icons.ts.
+    LucideDynamicIcon,
   ],
   templateUrl: './nav_button.component.html',
   styleUrl: './nav_button.component.scss',
@@ -49,6 +54,9 @@ export class NavButton {
   icon = computed<string | undefined>(() => this.navConfig()?.icon);
   isLucideMaterialIcon = computed<boolean>(
     () => this.navConfig()?.iconType === IconType.LUCIDE_MATERIAL,
+  );
+  isLucideIcon = computed<boolean>(
+    () => this.navConfig()?.iconType === IconType.LUCIDE,
   );
 
   // Utility classes for theme and button type
